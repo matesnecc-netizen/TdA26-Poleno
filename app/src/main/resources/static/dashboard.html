@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <nav>
+        <a href="index.html">Domů</a>
+        <a href="courses.html">Kurzy</a>
+        <a href="login.html">Odhlásit / Přihlásit</a>
+    </nav>
+
+    <h1>Dashboard lektora</h1>
+
+    <div class="card">
+        <p>Správa kurzů a podkladů (offline verze).</p>
+        <button id="logout">Odhlásit</button>
+    </div>
+
+    <div class="card">
+        <h2>Co bude umět backend později</h2>
+        <ul>
+            <li>Přidat podklad (soubor / odkaz)</li>
+            <li>Smazat podklad</li>
+            <li>Zobrazit podklady v detailu kurzu</li>
+        </ul>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Ochrana: nepřihlášený jde na login
+        if (!window.TDA_AUTH.isLoggedIn()) {
+            window.location.href = "login.html";
+        }
+
+        document.getElementById("logout").addEventListener("click", () => {
+            window.TDA_AUTH.setLoggedIn(false);
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>
